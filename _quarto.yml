@@ -10,6 +10,7 @@ website:
         text: Home
       - blog.qmd
       - projects.qmd
+      - contact.qmd
       - about.qmd
     right:
       - icon: github
