@@ -7,3 +7,249 @@ listing:
     - "date"
     - "title desc"
 ---
+
+## 1. Steps to add R project to GitHub Repository
+
+### Steps:
+
+1.  Create a GitHub Account or Login into an existing GitHub Account.
+2.  Create a new repository, `my-project`.
+3.  Open GitHub Desktop app.
+4.  File --\> Add local repository, select the project folder in your local workstation and click `Add Repository` or
+5.  File --\> Create a new repository, select `Create a new repository` and specify the working directory to use for your r-project and click `Create repository` (you can ignore `README` file initialization, `.Git ignore` and `.license`).
+6.  Create a new r-project into specified working directory from GitHub Desktop.
+7.  Select `File --> New project...`, select Existing Directory on New Project Wizard and choose the specified working directory from GitHub Desktop to create a (NB: Note that the GitHub Desktop will show Changes `.gitignore` and `r-project.Rproj`files are created.)
+8.  Publish your local repository to a GitHub repository by clicking Publish repository (you can unchecked button to keep the repository public, otherwise keep it checked if required to be private).
+
+## 2. Aggregate and visualize the R way.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Data Exploration
+library(tidyverse)
+library(skimr)
+library(lubridate)
+library(tidytext)
+library(timetk)
+library(gt)
+library(dataxray)
+# color pallete
+library(tidyquant)
+
+# modeling
+library(tidymodels)
+library(modeltime)
+
+# Visualization
+library(ggplot2)
+library(correlationfunnel)
+```
+
+### 2.1 Loading the `bike_orderlines` dataset
+
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
+bikes_tbl <- read_csv("./bike_orderlines.csv")%>%
+    mutate_if(is.character, as_factor)%>%
+    rename(category = category_1, sub_category = category_2)
+```
+
+### 2.2 Descriptive analysis with `skimr`
+
+A general overview of the data
+
+```{r}
+#| label: fig-airquality
+#| fig-cap: Temperature and ozone level.
+#| warning: false
+skimr::skim_without_charts(bikes_tbl)
+```
+
+As we can see, our dataset have:
+
+-   1 datetime variable,
+
+-   7 categorical variables,
+
+-   5 numeric variables.
+
+Fortunately no missing values in the data. From the factor summary, shops from **Kansas city** contributed to the most bike sales which is from the **Kansas State**. Surprisingly, shops from **Ithaca city** have least bike sales which is from the **NY state** instead of **AZ state** as indicated on the summary. **Elite road mountain** bikes with **carbon** material have more bike sales. Trail road bikes with **aluminium** have the least number of bike sales.
+
+Add more granular time variables (month, quarter & year)
+
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
+sales <- bikes_tbl %>%
+    mutate(month = month(order_date, abbr = FALSE, 
+                         label = TRUE, 
+                         locale = Sys.setlocale("LC_COLLATE", "C")),
+           quarter = quarter(order_date),
+           year = year(order_date))
+```
+
+### 2.3 Correlation of features
+
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
+sales%>%
+    select(-c(price, order_line, order_date, order_id))%>%
+    binarize()%>%
+    correlate(target = total_price__5330_Inf)%>%
+    plot_correlation_funnel(interactive = TRUE, alpha = 5)
+```
+
+For a quick correlation analysis, we observe that bike model, frame material, quantity, category and sub category do significantly affect large sales volume.
+
+### 2.4 Dual y-axis plotting
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+bike_aggregated_tbl <- bikes_tbl%>%
+    select(category, sub_category, quantity, total_price)%>%
+    rename(sales = total_price)%>%
+    group_by(sub_category)%>%
+    summarise(
+        across(
+            .cols = c(sales, quantity),
+            .fns = sum,
+            .names = "total_{.col}"
+        )
+    )%>%
+    ungroup()%>%
+    mutate(
+        prop = total_quantity/sum(total_quantity),
+        all_groups = "all_groups",
+        sub_category = fct_reorder(sub_category, prop)
+    )
+```
+
+#### Transformer Function
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+transformer_dual_y_axis <- function(data,
+                                    primary_column, secondary_column,
+                                    include_y_zero = FALSE) {
+    
+    # PARAMETER SETUP
+    params_tbl <- data %>%
+        summarise(
+            max_primary   = max(!! enquo(primary_column)),
+            min_primary   = min(!! enquo(primary_column)),
+            max_secondary = max(!! enquo(secondary_column)),
+            min_secondary = min(!! enquo(secondary_column))
+        )
+    
+    if (include_y_zero) {
+        params_tbl$min_primary   <- 0
+        params_tbl$min_secondary <- 0
+    }
+    
+    params_tbl <- params_tbl %>%
+        mutate(
+            scale = (max_secondary - min_secondary) / (max_primary - min_primary),
+            shift = min_primary - min_secondary
+        )
+    # MAKE SCALER FUNCTIONS
+    scale_func <- function(x) {
+        x * params_tbl$scale - params_tbl$shift
+    }
+    
+    inv_func <- function(x) {
+        (x + params_tbl$shift) / params_tbl$scale
+    }
+    
+    # RETURN
+    ret <- list(
+        scale_func = scale_func,
+        inv_func   = inv_func,
+        params_tbl = params_tbl
+    )
+    
+    return(ret)
+}
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# * Make A Y-Axis Transformer ----
+transformer <- bike_aggregated_tbl %>%
+    transformer_dual_y_axis(
+        primary_column   = prop,
+        secondary_column = total_sales,
+        include_y_zero   = TRUE
+    )
+```
+
+#### 3.1 Primar y-axis
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+g1 <- bike_aggregated_tbl %>%
+    ggplot(aes(x = sub_category)) +
+    geom_col(
+        aes(y = prop, fill = "Bikes Sub Category Proportion (%)"),
+        alpha = 0.9
+    ) +
+    geom_label(
+        aes(
+            y     = prop,
+            label = str_glue("{scales::percent(prop)}"),
+            color = "Bikes Sub Category Proportion (%)"
+        )
+    )
+```
+
+#### Scondar Axis
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+g2 <- g1 +
+    geom_line(
+        aes(
+            y     = transformer$inv_func(total_sales),
+            group = all_groups,
+            color = "Total Sales"
+        ),
+        size = 1
+    ) +
+    geom_point(
+        aes(
+            y     = transformer$inv_func(total_sales),
+            group = all_groups,
+            color = "Total Sales"
+        ),
+        size = 5
+    ) +
+    geom_label(
+        aes(
+            y     = transformer$inv_func(total_sales),
+            label = str_glue("{scales::dollar(total_sales, scale = 1e-6)}"),
+            color = "Total Sales"
+        ),
+        size = 3,
+        nudge_y = 0.008
+    ) +
+    
+    scale_y_continuous(
+        labels   = scales::percent_format(),
+        name     = "Quantity Sold (%)",
+        sec.axis = sec_axis(
+            trans = ~ transformer$scale_func(.),
+            name  = "Total Sales (Million $)",
+            labels = scales::number_format(scale = 1e-6, prefix = "$", suffix = "M"),
+        )
+    ) +
+    expand_limits(y = c(0,0.30))
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+g3 <- g2 +
+    theme_tq() +
+    scale_color_manual(values = c(
+        palette_light()[["red"]],
+        palette_light()[["blue"]]
+    )) +
+    scale_fill_manual(values = palette_light()[["blue"]]) +
+    theme(
+        legend.position    = "none",
+        axis.title.y.right = element_text(color = palette_light()[["red"]]),
+        axis.text.y.right  = element_text(color = palette_light()[["red"]])
+    ) +
+    labs(title = "Dual Y-Axis Plot: Bikes Total Sales vs Quantity Sold",
+         subtitle = "Considering all years, states based on sub category")
+
+g3
+```
