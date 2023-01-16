@@ -2,15 +2,43 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "actionable-analytics",
+    "title": "Actionable Analytics",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Eddwin Cheteni is the Data Scientist at Belgium Campus ITversity When not innovating on data platforms, Eddwin enjoys spending time with family and playing pool with friends."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\nNational University of Science and Technology, Bulawayo | Zimbabwe MSc in Operations Research and Statistics | Aug 2013 - Dec 2015\nMidlands State University, Gweru | Zimbabwe BSc in Mathematics | Aug 2006 - Dec 2010"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About",
+    "section": "Experience",
+    "text": "Experience\nBelgium Campus | Senior Data Scientist | June 2018 - present\nCode Express | Data Scientist | Jan 2017 - Dec 2018"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "No matching items"
   }
 ]

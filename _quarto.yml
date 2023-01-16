@@ -3,20 +3,42 @@ project:
 
 website:
   title: "Actionable Analytics"
+  cookie-consent: true
   navbar:
     left:
       - href: index.qmd
         text: Home
+      - blog.qmd
+      - projects.qmd
       - about.qmd
     right:
       - icon: github
         href: https://github.com/
+      - icon: facebook
+        href: https://www.facebook.com
+  sidebar:
+    contents: auto
 
 format:
   html:
-    theme: flatly
+    theme:
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
 
 editor: visual
 
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+
+page-footer:
+    left: "Copyright 2023, Eddwin Cheteni"
+    right:
+      - icon: github
+        href: https://github.com/eddychetz/
+      - icon: facebook
+        href: https://facebook.com/

@@ -1,9 +1,27 @@
 ---
 title: "About"
+about:
+  template: broadside
+  image: eddie04.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
 ---
 
-About this site
+Eddwin Cheteni is the Data Scientist at Belgium Campus ITversity When not innovating on data platforms, Eddwin enjoys spending time with family and playing pool with friends.
 
-```{r}
-1 + 1
-```
+## Education
+
+**National University of Science and Technology**, Bulawayo \| Zimbabwe MSc in Operations Research and Statistics \| Aug 2013 - Dec 2015
+
+**Midlands State University**, Gweru \| Zimbabwe BSc in Mathematics \| Aug 2006 - Dec 2010
+
+## Experience
+
+**Belgium Campus** \| Senior Data Scientist \| June 2018 - present
+
+**Code Express** \| Data Scientist \| Jan 2017 - Dec 2018
