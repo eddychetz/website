@@ -53,7 +53,7 @@ listing:
   contents: posts
   sort: "date desc"
   type: default
-  categories: true
+  categories: false
 
 page-footer:
     background: light

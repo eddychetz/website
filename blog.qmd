@@ -6,6 +6,9 @@ listing:
   sort:
     - "date"
     - "title desc"
+format:
+  html:
+    code-fold: true
 ---
 
 ## 1. Steps to add R project to GitHub Repository
@@ -23,8 +26,11 @@ listing:
 
 ## 2. Aggregate and visualize the R way.
 
+@code below loads important packages to be used in this analysis.
+
 ```{r}
-#| echo: false
+#| label: code
+#| echo: true
 #| warning: false
 #| message: false
 

@@ -2,7 +2,9 @@
 title: "Actionable Analytics"
 ---
 
-This is a Quarto website.
+Welcome to **Actionable Analytics**, the solution for all business problems. Actionable Analytics keeps the customer's voice at its maximum volume to deliver state-of-the-art and invaluable analytic solutions for business operations at it's best in a less risky and cost-effective way.
+
+![logo](ALPHA.jpg){#fig-logo}
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
