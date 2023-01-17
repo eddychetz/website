@@ -26,23 +26,19 @@ website:
       style: "docked"
       background: light
       contents:
-        - actionable-talks.qmd
-        - actionable-learn.qmd
+        - services.qmd
     - id: blog
       title: "Blog"
       style: "docked"
       background: dark
       contents:
-        - r-blog.qmd
-        - py-blog.qmd
+        - blog.qmd
     - id: projects
       title: "Projects"
       style: "docked"
       background: light
       contents:
-        - time-series.qmd
-        - cust-segmentation.qmd
-        - price-prediction.qmd
+        - projects.qmd
 format:
   html:
     theme:
