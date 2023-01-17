@@ -3,23 +3,46 @@ project:
 
 website:
   title: "Actionable Analytics"
-  cookie-consent: true
+  reader-mode: true
+  cookie-consent: false
   navbar:
+    background: primary
+    search: true
     left:
-      - href: index.qmd
-        text: Home
-      - blog.qmd
-      - projects.qmd
-      - contact.qmd
-      - about.qmd
-    right:
-      - icon: github
-        href: https://github.com/
-      - icon: facebook
-        href: https://www.facebook.com
-  sidebar:
-    contents: auto
+      - text: "Home"
+        file: index.qmd
+      - sidebar:services
+      - sidebar:blog
+      - sidebar:projects
+      - text: "About"
+        file: about.qmd
+      - text: "Contact"
+        file: contact.qmd
 
+
+  sidebar:
+    - id: services
+      title: "Services"
+      style: "docked"
+      background: light
+      contents:
+        - actionable-talks.qmd
+        - actionable-learn.qmd
+    - id: blog
+      title: "Blog"
+      style: "docked"
+      background: dark
+      contents:
+        - r-blog.qmd
+        - py-blog.qmd
+    - id: projects
+      title: "Projects"
+      style: "docked"
+      background: light
+      contents:
+        - time-series.qmd
+        - cust-segmentation.qmd
+        - price-prediction.qmd
 format:
   html:
     theme:
@@ -37,6 +60,8 @@ listing:
   categories: true
 
 page-footer:
+    background: light
+    border: true
     left: "Copyright 2023, Eddwin Cheteni"
     right:
       - icon: github
