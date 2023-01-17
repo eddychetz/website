@@ -23,7 +23,12 @@ listing:
 
 ## 2. Aggregate and visualize the R way.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
 # Data Exploration
 library(tidyverse)
 library(skimr)
