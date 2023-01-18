@@ -26,10 +26,9 @@ format:
 
 ## 2. Aggregate and visualize the R way.
 
-@code below loads important packages to be used in this analysis.
+The code below loads important packages to be used in this analysis.
 
 ```{r}
-#| label: code
 #| echo: true
 #| warning: false
 #| message: false
@@ -52,6 +51,7 @@ library(modeltime)
 
 # Visualization
 library(ggplot2)
+library(flexdashboard)
 library(correlationfunnel)
 ```
 
@@ -61,6 +61,12 @@ library(correlationfunnel)
 bikes_tbl <- read_csv("./bike_orderlines.csv")%>%
     mutate_if(is.character, as_factor)%>%
     rename(category = category_1, sub_category = category_2)
+```
+
+```{r}
+bikes_tbl%>%
+  make_xray()%>%
+  view_xray()
 ```
 
 ### 2.2 Descriptive analysis with `skimr`
@@ -93,6 +99,13 @@ sales <- bikes_tbl %>%
                          locale = Sys.setlocale("LC_COLLATE", "C")),
            quarter = quarter(order_date),
            year = year(order_date))
+```
+
+```{r}
+#| message: false
+#| warning: false
+sales %>%
+  report_xray(data_name = 'bikes', study = 'ggplot2')
 ```
 
 ### 2.3 Correlation of features
