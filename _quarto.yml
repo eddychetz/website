@@ -5,6 +5,23 @@ website:
   title: "Actionable Analytics"
   reader-mode: true
   cookie-consent: false
+  page-footer:
+      background: darkblue
+      border: true
+      left: "Copyright @2023, Eddwin Cheteni"
+      right:
+        - icon: github
+          href: https://github.com/eddychetz/
+        - icon: facebook
+          href: https://facebook.com/
+      center:
+        - text: "About"
+          href: about.qmd
+        - text: "License"
+          href: license.qmd
+        - text: "Trademark"
+          href: trademark.qmd
+
   navbar:
     background: primary
     search: true
@@ -14,17 +31,19 @@ website:
       - sidebar:services
       - sidebar:blog
       - sidebar:projects
-      - text: "About"
-        file: about.qmd
-      - text: "Contact"
-        file: contact.qmd
-
+      - sidebar:about
 
   sidebar:
+    - id: home
+      title: "Home"
+      style: "docked"
+      background: dark
+      contents:
+        - index.qmd
     - id: services
       title: "Services"
       style: "docked"
-      background: light
+      background: dark
       contents:
         - services.qmd
     - id: blog
@@ -36,9 +55,16 @@ website:
     - id: projects
       title: "Projects"
       style: "docked"
-      background: light
+      background: dark
       contents:
         - projects.qmd
+    - id: about
+      title: "More"
+      style: "docked"
+      background: dark
+      contents:
+        - about.qmd
+        - contact.qmd
 format:
   html:
     theme:
@@ -49,18 +75,3 @@ format:
 
 editor: visual
 
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: false
-
-page-footer:
-    background: light
-    border: true
-    left: "Copyright 2023, Eddwin Cheteni"
-    right:
-      - icon: github
-        href: https://github.com/eddychetz/
-      - icon: facebook
-        href: https://facebook.com/

@@ -2,8 +2,40 @@
 title: "Actionable Analytics"
 ---
 
-Welcome to **Actionable Analytics**, an IT service that enables you to quickly solve the most toughest business challenges and bring cutting-edge solutions to its users. Actionable Analytics keeps the customer's voice at its maximum volume to deliver state-of-the-art and invaluable analytic solutions for business operations at their best in a less risky and cost-effective way.
+![Actionables](ALPHA.jpg){#fig-logo .important fig-align="center" width="708"}
 
-![logo](ALPHA.jpg){#fig-logo width="551"}
+Welcome to **Actionable Analytics**, an IT 💻 consulting service that enables you to quickly solve the toughest business challenges and bring cutting-edge solutions to its users. Actionable ⚙️ Analytics 📈 📉 keeps the customer's voice at its maximum volume to deliver state-of-the-art and invaluable analytic solutions for business operations at their best in a less risky ⚠️ and cost-effective 💸 way.
+
+::: {style="color: steelblue"}
+Data Drives Actionable Insights
+:::
+
+::: panel-tabset
+## Business Science Strategy 💼
+
+This helps you in define your business problem, Key Performance Indicators (KPIs), and formulate strategies needed to solve your business problem. Leverage data to make smarter business decisions. Our team of data scientists and engineers can support your vision to grow the analytical capabilities of your organization. We use a systematic approach to scale long-term solutions, customized to fit your needs.
+
+## Predictive analytics 📈 📉
+
+Identify trends and patterns from past data to predict the future. Answer key business questions with the support of machine learning and AI tools.
+
+-   What could happen?
+
+-   Why this actually happened?
+
+-   What if the existing trend continues?
+:::
+
+::: panel-tabset
+## Reporting 🎤🔈
+
+Empower employees throughout your organization with streamlined processes, automated reports, and dynamic dashboards of key business insights. We will help democratize your data, and enable individuals to make the strongest decisions based on the most accurate and available information.
+
+## Distribution 🕸️
+
+Empower employees throughout your organization with streamlined processes, automated reports, and dynamic dashboards of key business insights. We will help democratize your data, and enable individuals to make the strongest decisions based on the most accurate and available information.
+:::
+
+Our Services are offered to the following Sectors ⚙️:
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

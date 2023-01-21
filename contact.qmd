@@ -2,8 +2,9 @@
   title: "Contact"
 ---
 
-  ![](ALPHA.png){fig-align="center" width="715"}
+![](ALPHA.png){fig-align="center" width="715"}
 
 ```{r}
 "How can we assist you?"
 ```
+
