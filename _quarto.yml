@@ -51,7 +51,8 @@ website:
       style: "docked"
       background: dark
       contents:
-        - blog.qmd
+        - text: "My Blog Posts"
+          href: https://actionable-blog-posts.netlify.app
     - id: projects
       title: "Projects"
       style: "docked"
