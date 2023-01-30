@@ -1,5 +1,5 @@
 ---
-title: "QUADRANTS ANALYTICS"
+title: "QUADRANTS"
 ---
 
 ![Quandrants](images/ALPHA.jpg){#fig-logo .important fig-align="center" width="708"}
