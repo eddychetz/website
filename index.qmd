@@ -1,8 +1,8 @@
 ---
-title: "Quadrants Analytics"
+title: "QUADRANTS ANALYTICS"
 ---
 
-![Actionables](images/ALPHA.jpg){#fig-logo .important fig-align="center" width="708"}
+![Quandrants](images/ALPHA.jpg){#fig-logo .important fig-align="center" width="708"}
 
 Welcome to **Actionable Analytics**, an IT 💻 consulting service that enables your business to quickly solve the toughest challenges and bring cutting-edge solutions to its customer through business science. Actionable ⚙️ Analytics 📈 📉 keeps the customer's voice at its peak to deliver state-of-the-art and invaluable analytic solutions for business operations, at their best in a less risky ⚠️ and cost-effective 💸 way.
 
