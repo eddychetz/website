@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Actionable Analytics"
+  title: "Quadrants Analytics"
   reader-mode: true
   cookie-consent: false
   page-footer:
@@ -34,12 +34,12 @@ website:
       - sidebar:about
 
   sidebar:
-    - id: home
-      title: "Home"
-      style: "docked"
-      background: dark
-      contents:
-        - index.qmd
+    # - id: home
+    #   title: "Home"
+    #   style: "docked"
+    #   background: dark
+    #   contents:
+    #     - index.qmd
     - id: services
       title: "Services"
       style: "docked"

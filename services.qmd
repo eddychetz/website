@@ -1,3 +1,52 @@
 ---
-title: "Services"
+title: "Our Services"
+head
 ---
+
+::: grid
+::: g-col-12
+### Our Services are offered to the following Sectors ⚙️.
+:::
+
+::: g-col-3
+![](images/education.png){width="75"}
+
+#### Education
+:::
+
+::: g-col-3
+![](images/fast-food.png){width="75"}
+
+#### Food & Beverages
+:::
+
+::: g-col-3
+![](images/house.png){width="75"}
+
+#### Real Estate
+:::
+
+::: g-col-3
+![](images/factory.png){width="75"}
+
+#### Manufacturing
+:::
+
+::: g-col-3
+![](images/financial.png){width="75"}
+
+#### Financial Services
+:::
+
+::: g-col-3
+![](images/supply-chain.png){width="75"}
+
+#### Distribution
+:::
+
+::: g-col-3
+![](images/online-shopping.png){width="75"}
+
+#### Retail & E-commerce
+:::
+:::
